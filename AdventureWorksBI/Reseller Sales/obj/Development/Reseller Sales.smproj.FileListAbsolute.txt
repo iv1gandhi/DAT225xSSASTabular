@@ -1,0 +1,7 @@
+C:\Users\Ivan_Khokhlachev\Documents\Visual Studio 2017\AdventureWorksBI\Reseller Sales\bin\Model.asdatabase
+C:\Users\Ivan_Khokhlachev\Documents\Visual Studio 2017\AdventureWorksBI\Reseller Sales\bin\Model.deploymenttargets
+C:\Users\Ivan_Khokhlachev\Documents\Visual Studio 2017\AdventureWorksBI\Reseller Sales\bin\Model.deploymentoptions
+C:\Users\Ivan_Khokhlachev\Documents\Visual Studio 2017\AdventureWorksBI\Reseller Sales\obj\Development\Reseller Sales.smproj.CoreCompileInputs.cache
+C:\Users\Ivan_Khokhlachev\Documents\Visual Studio 2017\AdventureWorksBI\Reseller Sales\obj\Development\Model.asdatabase
+C:\Users\Ivan_Khokhlachev\Documents\Visual Studio 2017\AdventureWorksBI\Reseller Sales\obj\Development\Model.deploymentoptions
+C:\Users\Ivan_Khokhlachev\Documents\Visual Studio 2017\AdventureWorksBI\Reseller Sales\obj\Development\Model.deploymenttargets
