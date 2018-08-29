@@ -60,6 +60,7 @@
           {
             "name": "DateKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "DateKey"
           },
           {
@@ -81,7 +82,17 @@
           {
             "name": "Month",
             "dataType": "string",
-            "sourceColumn": "Month"
+            "sourceColumn": "Month",
+            "sortByColumn": "MonthKey"
+          },
+          {
+            "type": "calculated",
+            "name": "MonthKey",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "(YEAR([Date]) * 100) + MONTH([Date])",
+            "formatString": "0"
           }
         ],
         "partitions": [
@@ -106,6 +117,28 @@
               ]
             }
           }
+        ],
+        "hierarchies": [
+          {
+            "name": "Calendar",
+            "levels": [
+              {
+                "name": "Year",
+                "ordinal": 0,
+                "column": "Year"
+              },
+              {
+                "name": "Quarter",
+                "ordinal": 1,
+                "column": "Quarter"
+              },
+              {
+                "name": "Month",
+                "ordinal": 2,
+                "column": "Month"
+              }
+            ]
+          }
         ]
       },
       {
@@ -114,11 +147,13 @@
           {
             "name": "EmployeeKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "EmployeeKey"
           },
           {
             "name": "LoginID",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "LoginID"
           },
           {
@@ -168,6 +203,33 @@
               ]
             }
           }
+        ],
+        "hierarchies": [
+          {
+            "name": "Salespeople",
+            "levels": [
+              {
+                "name": "Group",
+                "ordinal": 0,
+                "column": "Group"
+              },
+              {
+                "name": "Country",
+                "ordinal": 1,
+                "column": "Country"
+              },
+              {
+                "name": "Region",
+                "ordinal": 2,
+                "column": "Region"
+              },
+              {
+                "name": "Salesperson",
+                "ordinal": 3,
+                "column": "Salesperson"
+              }
+            ]
+          }
         ]
       },
       {
@@ -176,6 +238,7 @@
           {
             "name": "ProductKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ProductKey"
           },
           {
@@ -218,6 +281,28 @@
               ]
             }
           }
+        ],
+        "hierarchies": [
+          {
+            "name": "Products",
+            "levels": [
+              {
+                "name": "Category",
+                "ordinal": 0,
+                "column": "Category"
+              },
+              {
+                "name": "Subcategory",
+                "ordinal": 1,
+                "column": "Subcategory"
+              },
+              {
+                "name": "Product",
+                "ordinal": 2,
+                "column": "Product"
+              }
+            ]
+          }
         ]
       },
       {
@@ -226,6 +311,7 @@
           {
             "name": "ResellerKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ResellerKey"
           },
           {
@@ -241,17 +327,20 @@
           {
             "name": "City",
             "dataType": "string",
-            "sourceColumn": "City"
+            "sourceColumn": "City",
+            "dataCategory": "City"
           },
           {
             "name": "State-Province",
             "dataType": "string",
-            "sourceColumn": "State-Province"
+            "sourceColumn": "State-Province",
+            "dataCategory": "StateOrProvince"
           },
           {
             "name": "Country-Region",
             "dataType": "string",
-            "sourceColumn": "Country-Region"
+            "sourceColumn": "Country-Region",
+            "dataCategory": "Country"
           }
         ],
         "partitions": [
@@ -275,6 +364,48 @@
               ]
             }
           }
+        ],
+        "hierarchies": [
+          {
+            "name": "Resellers",
+            "levels": [
+              {
+                "name": "Business Type",
+                "ordinal": 0,
+                "column": "Business Type"
+              },
+              {
+                "name": "Reseller",
+                "ordinal": 1,
+                "column": "Reseller"
+              }
+            ]
+          },
+          {
+            "name": "Geography",
+            "levels": [
+              {
+                "name": "Country-Region",
+                "ordinal": 0,
+                "column": "Country-Region"
+              },
+              {
+                "name": "State-Province",
+                "ordinal": 1,
+                "column": "State-Province"
+              },
+              {
+                "name": "City",
+                "ordinal": 2,
+                "column": "City"
+              },
+              {
+                "name": "Reseller",
+                "ordinal": 3,
+                "column": "Reseller"
+              }
+            ]
+          }
         ]
       },
       {
@@ -283,36 +414,43 @@
           {
             "name": "ProductKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ProductKey"
           },
           {
             "name": "OrderDateKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "OrderDateKey"
           },
           {
             "name": "ResellerKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ResellerKey"
           },
           {
             "name": "EmployeeKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "EmployeeKey"
           },
           {
             "name": "OrderQuantity",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "OrderQuantity"
           },
           {
             "name": "TotalProductCost",
             "dataType": "decimal",
+            "isHidden": true,
             "sourceColumn": "TotalProductCost"
           },
           {
             "name": "SalesAmount",
             "dataType": "decimal",
+            "isHidden": true,
             "sourceColumn": "SalesAmount"
           }
         ],
@@ -332,30 +470,6 @@
               ]
             }
           }
-        ],
-        "measures": [
-          {
-            "name": "Sum of TotalProductCost",
-            "expression": "SUM([TotalProductCost])",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "Sum of SalesAmount",
-            "expression": "SUM([SalesAmount])",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          }
         ]
       },
       {
@@ -364,16 +478,19 @@
           {
             "name": "DateKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "DateKey"
           },
           {
             "name": "Employee ID",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "Employee ID"
           },
           {
             "name": "TargetAmount",
             "dataType": "decimal",
+            "isHidden": true,
             "sourceColumn": "TargetAmount"
           }
         ],
