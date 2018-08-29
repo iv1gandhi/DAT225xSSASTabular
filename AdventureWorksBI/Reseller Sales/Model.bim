@@ -470,6 +470,67 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "Distinct Products",
+            "expression": "DISTINCTCOUNT([ProductKey])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Units",
+            "expression": "SUM([OrderQuantity])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Cost",
+            "expression": "SUM([TotalProductCost])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Sales",
+            "expression": "SUM([SalesAmount])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Profit",
+            "expression": "[Sales] - [Cost]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Profit%",
+            "expression": "DIVIDE([Profit], [Sales])",
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "Sales YTD",
+            "expression": "TOTALYTD([Sales], 'Date'[Date])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
         ]
       },
       {
@@ -516,6 +577,90 @@
                 "    #\"Reordered Columns\""
               ]
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Target",
+            "expression": " IF( ISFILTERED('Date'[Month]), SUMX( VALUES('Date'[Quarter]), CALCULATE( SUM([TargetAmount]), ALLEXCEPT('Date', 'Date'[Quarter]) ) / 3 * CALCULATE(DISTINCTCOUNT('Date'[Month])) ), SUM([TargetAmount]) )",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Variance",
+            "expression": "[Sales] - [Target]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Variance%",
+            "expression": "DIVIDE([Variance], [Target])",
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "Sales Performance",
+            "expression": "[Sales]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "kpi": {
+              "targetExpression": "'Target'[Target]",
+              "targetFormatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+              "statusGraphic": "Shapes",
+              "statusExpression": [
+                "var x='Target'[Sales Performance]/'Target'[_Sales Performance Goal] return",
+                "            if(ISBLANK(x),BLANK(),",
+                "                    If(x<0.9,-1,",
+                "\t                If(x<1,0,1)",
+                "                )",
+                "            )",
+                "            "
+              ],
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "Measure"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "Linear"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Percentage"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "90"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "100"
+                }
+              ]
+            },
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
           }
         ]
       }
