@@ -456,7 +456,35 @@
         ],
         "partitions": [
           {
-            "name": "Partition",
+            "name": "Sales CY2014",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/EPRUPETW1813\\MSSQL2017TAB;AdventureWorksDW2016\",",
+                "    dbo_FactResellerSales = Source{[Schema=\"dbo\",Item=\"FactResellerSales\"]}[Data],",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(dbo_FactResellerSales,{\"ProductKey\", \"OrderDateKey\", \"ResellerKey\", \"EmployeeKey\", \"OrderQuantity\", \"TotalProductCost\", \"SalesAmount\"}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Removed Other Columns\", each [OrderDateKey] >= 20140101 and [OrderDateKey] <= 20141231)",
+                "in",
+                "    #\"Filtered Rows\""
+              ]
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>let",
+                  "    Source = #\"SQL/EPRUPETW1813\\MSSQL2017TAB;AdventureWorksDW2016\",",
+                  "    dbo_FactResellerSales = Source{[Schema=\"dbo\",Item=\"FactResellerSales\"]}[Data],",
+                  "    #\"Removed Other Columns\" = Table.SelectColumns(dbo_FactResellerSales,{\"ProductKey\", \"OrderDateKey\", \"ResellerKey\", \"EmployeeKey\", \"OrderQuantity\", \"TotalProductCost\", \"SalesAmount\"})",
+                  "in",
+                  "    #\"Removed Other Columns\"</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Sales CY2015",
             "dataView": "full",
             "source": {
               "type": "m",
@@ -464,11 +492,72 @@
                 "let",
                 "    Source = #\"SQL/EPRUPETW1813\\MSSQL2017TAB;AdventureWorksDW2016\",",
                 "    dbo_FactResellerSales = Source{[Schema=\"dbo\",Item=\"FactResellerSales\"]}[Data],",
-                "    #\"Removed Other Columns\" = Table.SelectColumns(dbo_FactResellerSales,{\"ProductKey\", \"OrderDateKey\", \"ResellerKey\", \"EmployeeKey\", \"OrderQuantity\", \"TotalProductCost\", \"SalesAmount\"})",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(dbo_FactResellerSales,{\"ProductKey\", \"OrderDateKey\", \"ResellerKey\", \"EmployeeKey\", \"OrderQuantity\", \"TotalProductCost\", \"SalesAmount\"}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Removed Other Columns\", each [OrderDateKey] >= 20150101 and [OrderDateKey] <= 20151231)",
                 "in",
-                "    #\"Removed Other Columns\""
+                "    #\"Filtered Rows\""
               ]
             }
+          },
+          {
+            "name": "Sales CY2016",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/EPRUPETW1813\\MSSQL2017TAB;AdventureWorksDW2016\",",
+                "    dbo_FactResellerSales = Source{[Schema=\"dbo\",Item=\"FactResellerSales\"]}[Data],",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(dbo_FactResellerSales,{\"ProductKey\", \"OrderDateKey\", \"ResellerKey\", \"EmployeeKey\", \"OrderQuantity\", \"TotalProductCost\", \"SalesAmount\"}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Removed Other Columns\", each [OrderDateKey] >= 20160101 and [OrderDateKey] <= 20161231)",
+                "in",
+                "    #\"Filtered Rows\""
+              ]
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>let",
+                  "    Source = #\"SQL/EPRUPETW1813\\MSSQL2017TAB;AdventureWorksDW2016\",",
+                  "    dbo_FactResellerSales = Source{[Schema=\"dbo\",Item=\"FactResellerSales\"]}[Data],",
+                  "    #\"Removed Other Columns\" = Table.SelectColumns(dbo_FactResellerSales,{\"ProductKey\", \"OrderDateKey\", \"ResellerKey\", \"EmployeeKey\", \"OrderQuantity\", \"TotalProductCost\", \"SalesAmount\"}),",
+                  "    #\"Filtered Rows\" = Table.SelectRows(#\"Removed Other Columns\", each [OrderDateKey] >= 20160101 and [OrderDateKey] <= 20161231)",
+                  "in",
+                  "    #\"Filtered Rows\"</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Sales CY2017",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/EPRUPETW1813\\MSSQL2017TAB;AdventureWorksDW2016\",",
+                "    dbo_FactResellerSales = Source{[Schema=\"dbo\",Item=\"FactResellerSales\"]}[Data],",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(dbo_FactResellerSales,{\"ProductKey\", \"OrderDateKey\", \"ResellerKey\", \"EmployeeKey\", \"OrderQuantity\", \"TotalProductCost\", \"SalesAmount\"}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Removed Other Columns\", each [OrderDateKey] >= 20170101 and [OrderDateKey] <= 20171231)",
+                "in",
+                "    #\"Filtered Rows\""
+              ]
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>let",
+                  "    Source = #\"SQL/EPRUPETW1813\\MSSQL2017TAB;AdventureWorksDW2016\",",
+                  "    dbo_FactResellerSales = Source{[Schema=\"dbo\",Item=\"FactResellerSales\"]}[Data],",
+                  "    #\"Removed Other Columns\" = Table.SelectColumns(dbo_FactResellerSales,{\"ProductKey\", \"OrderDateKey\", \"ResellerKey\", \"EmployeeKey\", \"OrderQuantity\", \"TotalProductCost\", \"SalesAmount\"}),",
+                  "    #\"Filtered Rows\" = Table.SelectRows(#\"Removed Other Columns\", each [OrderDateKey] >= 20170101 and [OrderDateKey] <= 20171231)",
+                  "in",
+                  "    #\"Filtered Rows\"</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
           }
         ],
         "measures": [
@@ -693,6 +782,18 @@
         "fromColumn": "OrderDateKey",
         "toTable": "Date",
         "toColumn": "DateKey"
+      }
+    ],
+    "roles": [
+      {
+        "name": "Salespeople",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "Salesperson",
+            "filterExpression": "[Region] = LOOKUPVALUE(Salesperson[Region], Salesperson[LoginID], USERNAME())"
+          }
+        ]
       }
     ],
     "annotations": [
