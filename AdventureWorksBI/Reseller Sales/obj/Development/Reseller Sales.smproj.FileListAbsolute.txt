@@ -5,3 +5,17 @@ C:\Users\Ivan_Khokhlachev\Documents\Visual Studio 2017\AdventureWorksBI\Reseller
 C:\Users\Ivan_Khokhlachev\Documents\Visual Studio 2017\AdventureWorksBI\Reseller Sales\obj\Development\Model.asdatabase
 C:\Users\Ivan_Khokhlachev\Documents\Visual Studio 2017\AdventureWorksBI\Reseller Sales\obj\Development\Model.deploymentoptions
 C:\Users\Ivan_Khokhlachev\Documents\Visual Studio 2017\AdventureWorksBI\Reseller Sales\obj\Development\Model.deploymenttargets
+C:\DAT225x-SSAS_Tabular-master\Project\AdventureWorksBI\Reseller Sales\bin\Model.asdatabase
+C:\DAT225x-SSAS_Tabular-master\Project\AdventureWorksBI\Reseller Sales\bin\Model.deploymenttargets
+C:\DAT225x-SSAS_Tabular-master\Project\AdventureWorksBI\Reseller Sales\bin\Model.deploymentoptions
+C:\DAT225x-SSAS_Tabular-master\Project\AdventureWorksBI\Reseller Sales\obj\Development\Reseller Sales.smproj.CoreCompileInputs.cache
+C:\DAT225x-SSAS_Tabular-master\Project\AdventureWorksBI\Reseller Sales\obj\Development\Model.asdatabase
+C:\DAT225x-SSAS_Tabular-master\Project\AdventureWorksBI\Reseller Sales\obj\Development\Model.deploymentoptions
+C:\DAT225x-SSAS_Tabular-master\Project\AdventureWorksBI\Reseller Sales\obj\Development\Model.deploymenttargets
+C:\github\Tabular\AdventureWorksBI\Reseller Sales\bin\Model.asdatabase
+C:\github\Tabular\AdventureWorksBI\Reseller Sales\bin\Model.deploymenttargets
+C:\github\Tabular\AdventureWorksBI\Reseller Sales\bin\Model.deploymentoptions
+C:\github\Tabular\AdventureWorksBI\Reseller Sales\obj\Development\Reseller Sales.smproj.CoreCompileInputs.cache
+C:\github\Tabular\AdventureWorksBI\Reseller Sales\obj\Development\Model.asdatabase
+C:\github\Tabular\AdventureWorksBI\Reseller Sales\obj\Development\Model.deploymentoptions
+C:\github\Tabular\AdventureWorksBI\Reseller Sales\obj\Development\Model.deploymenttargets
